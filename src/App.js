@@ -1,7 +1,9 @@
 import { React, useState, useEffect } from 'react';
 import { intervalToDuration } from 'date-fns';
 import { supabase } from './SupabaseClient'
+import Button from 'react-bootstrap/Button';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const useTimer = () => {
   const [now, setNow] = useState(new Date());
@@ -46,22 +48,22 @@ const Timer = () => {
   const { months, days, hours, minutes, seconds } = useTimer();
 
   return (
-    <div className="container" key={`timer-1`}>
+    <div className="container">
       <h1 className="timer-heading">Time since 04/01/22</h1>
-      <div id="countdown" key={`timer-2`}>
+      <div id="countdown" >
         <ul>
-          <li key={`month-${months}`}><span ></span>Months <span className='number'>{months}</span></li>
-          <li key={`days-${days}`}><span ></span>Days <span className='number'>{days}</span></li>
-          <li key={`hours-${hours}`}><span ></span>Hours <span className='number'>{hours}</span></li>
-          <li key={`minutes-${minutes}`}><span ></span>Minutes <span className='number'>{minutes}</span></li>
-          <li key={`seconds-${seconds}`}><span ></span>Seconds <span className='number'>{seconds}</span></li>
+          <li><span ></span>Months <span className='number'>{months}</span></li>
+          <li><span ></span>Days <span className='number'>{days}</span></li>
+          <li><span ></span>Hours <span className='number'>{hours}</span></li>
+          <li><span ></span>Minutes <span className='number'>{minutes}</span></li>
+          <li><span ></span>Seconds <span className='number'>{seconds}</span></li>
         </ul>
       </div>
     </div>
   );
 }
 
-const Button = () => {
+const CounterButton = () => {
   const [cuddles, setCuddles] = useState();
   const [totalcuddles, setTotalCuddles] = useState();
   const [kisses, setBigKiss] = useState();
@@ -142,12 +144,12 @@ const Button = () => {
   html.push(<p className='sub-headings'>❤️ Number of Big Kisses: {kisses}</p>);
 
   return (
-    <div key={`container-${cuddles}`}>
-      <p className='sub-headings' key={`cuddles-${cuddles + 1}`}>❤️ Number of Cuddles: {cuddles}</p>
+    <div >
+      <p className='sub-headings'>❤️ Number of Cuddles: {cuddles}</p>
       {html}
-      <button className="cybr-btn" onClick={handleOnClick} key={`button-${cuddles}`}> {buttonLabel} <span aria-hidden>{''}</span>
-        <span aria-hidden className="cybr-btn__glitch">Noorie</span>
-        <span aria-hidden className="cybr-btn__tag"></span></button>
+      <Button style={{backgroundColor: 'red', border: 'none'}} onClick={handleOnClick}><span style={{fontFamily: 'Courier New, monospace', fontWeight: 'bolder'}}>{buttonLabel}</span>  {/*<span aria-hidden>{''}</span>*/}
+        {/*<span aria-hidden className="cybr-btn__glitch">Noorie</span>
+        <span aria-hidden className="cybr-btn__tag"></span>*/}</Button>
     </div>
   );
 }
@@ -155,8 +157,8 @@ const Button = () => {
 const NoorieCuddles = ({ cuddles, setCuddles }) => {
 
   return (
-    <div key= {`cuddle-${cuddles}`}>
-      <Button key= {`button-${cuddles + 1}`} cuddles={cuddles} setCuddles={setCuddles} />
+    <div>
+      <CounterButton cuddles={cuddles} setCuddles={setCuddles} />
     </div>
   );
 
@@ -167,8 +169,8 @@ function App () {
   return (
     <div className="App">
       <h1 className='heading'>{'I Owe Noorie 🤭'}</h1>
-      <NoorieCuddles key={`nooriecuddles-${1}`} />
-      <Timer key={`timer-1`} />
+      <NoorieCuddles />
+      <Timer />
       <span style={{ fontSize: '30px', position: 'absolute', bottom: '45px', marginLeft: 'auto', marginRight: 'auto', left: '45px', right: '0px', textAlign: 'center', color: 'white' }}>A Noorie Site ❤️  &copy;</span>
     </div>
   );
