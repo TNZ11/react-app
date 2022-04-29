@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const useTimer = () => {
   const [now, setNow] = useState(new Date());
-  const fromDate = new Date('2022-01-04T00:00:00z');
+  const fromDate = Date.parse('2022-01-04T00:00:00z');
   let months = 0;
   let days = 0;
   let hours = 0;
