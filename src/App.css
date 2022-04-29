@@ -1,4 +1,4 @@
-/* .App {
+.App {
   text-align: center;
   background-color: rgb(12, 3, 3);
   position: fixed;
@@ -51,8 +51,8 @@ li span {
 
 .number {
   color: rgb(255, 255, 255);
-} */
-/* 
+}
+
 @font-face {
   font-family: Cyber;
   src: url("https://assets.codepen.io/605876/Blender-Pro-Bold.otf");
@@ -246,4 +246,4 @@ body .cybr-btn + .cybr-btn {
 
 .cybr-btn:nth-of-type(2) {
   --primary-hue: 260;
-} */
+}
