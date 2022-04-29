@@ -24,16 +24,16 @@ const useTimer = () => {
     }
   }, []);
 
-  // const duration = intervalToDuration({
-  //   start: fromDate,
-  //   end: now
-  // })
+  const duration = intervalToDuration({
+    start: fromDate,
+    end: now
+  })
 
-  // months = duration.months;
-  // days = duration.days;
-  // hours = duration.hours;
-  // minutes = duration.minutes;
-  // seconds = duration.seconds;
+  months = duration.months;
+  days = duration.days;
+  hours = duration.hours;
+  minutes = duration.minutes;
+  seconds = duration.seconds;
 
   return {
     months,
