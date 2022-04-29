@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { intervalToDuration } from 'date-fns';
+import parseISO from 'date-fns/parseISO'
+//import moment from 'moment'
 import { supabase } from './SupabaseClient'
 //import Button from 'react-bootstrap/Button';
 import './App.css';
@@ -7,7 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const useTimer = () => {
   const [now, setNow] = useState(new Date());
-  const fromDate = Date.parse('2022-01-04T00:00:00z');
+  const fromDate = parseISO('2022-01-04T00:00:00');
+  console.log(fromDate)
   let months = 0;
   let days = 0;
   let hours = 0;
