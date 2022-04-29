@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { intervalToDuration } from 'date-fns';
-//import { supabase } from './SupabaseClient'
-//import Button from 'react-bootstrap/Button';
+import { supabase } from './SupabaseClient'
+import Button from 'react-bootstrap/Button';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -86,60 +86,60 @@ const CounterButton = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const updateData = async () => {
-  //     try {
-  //       const updates = {
-  //         id: 1,
-  //         cuddles,
-  //         kisses,
-  //         totalcuddles,
-  //       }
+  useEffect(() => {
+    const updateData = async () => {
+      try {
+        const updates = {
+          id: 1,
+          cuddles,
+          kisses,
+          totalcuddles,
+        }
   
-  //       let { error } = await supabase.from('cuddlecounter').upsert(updates, {
-  //         returning: 'minimal',
-  //       })
+        let { error } = await supabase.from('cuddlecounter').upsert(updates, {
+          returning: 'minimal',
+        })
   
-  //       if (error) {
-  //         throw error
-  //       }
-  //     } catch (error) {
-  //       alert(error.message)
-  //     } 
-  //   }
+        if (error) {
+          throw error
+        }
+      } catch (error) {
+        alert(error.message)
+      } 
+    }
 
-  //   updateData();
-  // }, [cuddles, kisses, totalcuddles]);
+    updateData();
+  }, [cuddles, kisses, totalcuddles]);
 
   
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
-  // const getData = async () => {
-  //   try {
-  //     let { data, error, status } = await supabase
-  //       .from('cuddlecounter')
-  //       .select(`cuddles, kisses, totalcuddles`)
-  //       .eq('id', 1)
-  //       .single()
+  const getData = async () => {
+    try {
+      let { data, error, status } = await supabase
+        .from('cuddlecounter')
+        .select(`cuddles, kisses, totalcuddles`)
+        .eq('id', 1)
+        .single()
 
 
-  //     if (error && status !== 406) {
-  //       throw error
-  //     }
+      if (error && status !== 406) {
+        throw error
+      }
 
-  //     if (data) {
-  //       console.log(data);
-  //       setCuddles(data.cuddles)
-  //       setBigKiss(data.kisses)
-  //       setTotalCuddles(data.totalcuddles)
-  //     }
-  //   } catch (error) {
-  //     alert(error.message)
-  //   }
-  // }
+      if (data) {
+        console.log(data);
+        setCuddles(data.cuddles)
+        setBigKiss(data.kisses)
+        setTotalCuddles(data.totalcuddles)
+      }
+    } catch (error) {
+      alert(error.message)
+    }
+  }
 
   html.push(<p className='sub-headings'>❤️ Number of Big Kisses: {kisses}</p>);
 
