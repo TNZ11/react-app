@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const useTimer = () => {
   const [now, setNow] = useState(new Date());
-  const fromDate = new Date('2022-01-04 00:00:00') || 'Tue Jan 04 2022 00:00:00 GMT+0000 (Greenwich Mean Time)';
+  const fromDate = new Date('2022-01-04 T00:00:00 z');
   let months = 0;
   let days = 0;
   let hours = 0;
@@ -24,16 +24,16 @@ const useTimer = () => {
     }
   }, []);
 
-  const duration = intervalToDuration({
-    start: fromDate,
-    end: now
-  })
+  // const duration = intervalToDuration({
+  //   start: fromDate,
+  //   end: now
+  // })
 
-  months = duration.months;
-  days = duration.days;
-  hours = duration.hours;
-  minutes = duration.minutes;
-  seconds = duration.seconds;
+  // months = duration.months;
+  // days = duration.days;
+  // hours = duration.hours;
+  // minutes = duration.minutes;
+  // seconds = duration.seconds;
 
   return {
     months,
