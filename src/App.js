@@ -1,13 +1,13 @@
 import { React, useState, useEffect } from 'react';
 import { intervalToDuration } from 'date-fns';
 import { supabase } from './SupabaseClient'
-import Button from 'react-bootstrap/Button';
+//import Button from 'react-bootstrap/Button';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const useTimer = () => {
   const [now, setNow] = useState(new Date());
-  const fromDate = new Date('01 04 2022');
+  const fromDate = new Date('2022-01-04 00:00:00') || 'Tue Jan 04 2022 00:00:00 GMT+0000 (Greenwich Mean Time)';
   let months = 0;
   let days = 0;
   let hours = 0;
