@@ -1,14 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { supabase } from '../SupabaseClient';
 import WaterGlass from './WaterGlass';
 
-const CounterButton = () => {
-  const [cuddles, setCuddles] = useState();
-  const [totalcuddles, setTotalCuddles] = useState();
-  const [kisses, setBigKiss] = useState();
-  const [glasses, setGlasses] = useState();
-  const [buttonLabel, setButtonLabel] = useState('Add Cuddles');
-
+const CounterButton = ({
+  cuddles,
+  setCuddles,
+  totalcuddles,
+  setTotalCuddles,
+  kisses,
+  setBigKiss,
+  glasses,
+  setGlasses,
+  buttonLabel,
+  setButtonLabel,
+}) => {
   const html = [];
 
   const handleOnClick = () => {
@@ -103,8 +108,6 @@ const CounterButton = () => {
           alignContent: 'center',
         }}
       >
-        {' '}
-        <WaterGlass glasses={glasses} setGlasses={setGlasses} />{' '}
       </span>
     </div>
   );
