@@ -52,7 +52,8 @@ const WaterGlass = ({ glasses, setGlasses }) => {
     glasses === 8 ? (
       <div className="shape">
         <div className="wave"></div>
-        <span style={{ fontSize: '50px', color: 'darkgreen', position: 'relative', border: `solid 4px darkgreen`, }}>
+        <span style={{ fontSize: '50px', color: 'darkgreen', position: 'relative', border: `solid 4px darkgreen`,  padding: '20px', borderRadius: '50%', fontFamily: 'Courier New, monospace',
+            fontWeight: 'bold' }}>
           {glasses}
         </span>
       </div>
