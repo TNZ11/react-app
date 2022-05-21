@@ -36,7 +36,7 @@ const WaterGlass = ({ glasses, setGlasses }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setNow(moment(new Date()).format('HH:mm:ss'));
-      if (now === "00:00:00") {
+      if (now === '00:00:00') {
         setGlasses(0);
       }
     }, 1000);
@@ -44,7 +44,9 @@ const WaterGlass = ({ glasses, setGlasses }) => {
     return () => {
       clearInterval(interval);
     };
-  }, now);
+  }, [now]);
+
+  const colour = glasses <= 5 ? 'red' : glasses > 5 ? '#FFBF00' : 'green';
 
   const glass =
     glasses === 8 ? (
@@ -60,7 +62,18 @@ const WaterGlass = ({ glasses, setGlasses }) => {
         onClick={handleOnClick}
         style={{ cursor: 'pointer' }}
       >
-        <span style={{ fontSize: '50px', color: 'red', position: 'relative' }}>
+        <span
+          style={{
+            fontSize: '50px',
+            color: colour,
+            position: 'relative',
+            border: `solid 4px ${colour}`,
+            padding: '20px',
+            borderRadius: '50%',
+            fontFamily: 'Courier New, monospace',
+            fontWeight: 'bold'
+          }}
+        >
           {glasses}
         </span>
       </div>
