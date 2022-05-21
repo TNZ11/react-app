@@ -1,22 +1,28 @@
 .App {
   text-align: center;
-  background-color: rgb(12, 3, 3);
+  background-color: rgb(0, 0, 0);
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .heading {
   font-size: 85px;
   background-color: #9f1a1a;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
 }
 
 .sub-headings {
   font-size: 35px;
   background-color: #9f1a1a;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
 }
 
 .container {
@@ -424,4 +430,97 @@ body .cybr-btn + .cybr-btn {
   100% {
     transform: translate(-50%, -75%) rotate(360deg);
   }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Rye);
+
+body 
+{ background: #eee; }
+
+.banner {
+  position: relative;
+  left: 50%;
+  display: block;
+  margin: 100px -400px;
+  width: 400px;
+  height: 60px;
+  border: 1px solid #8a1;
+  font: normal 30px/60px 'Rye';
+  text-align: center;
+  color: rgb(0, 0, 0);
+  background: #9b2;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0,0,0,.15) inset,
+      				0 6px 10px rgba(0,0,0,.15);
+}
+
+.banner::before,
+.banner::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -70px;
+  top: 24px;
+  display: block;
+  width: 40px;
+  height: 0px;
+  border: 30px solid #9b2;
+  border-right: 20px solid #791;
+  border-bottom-color: #94b81e;
+  border-left-color: transparent;
+  transform: rotate(-5deg);
+}
+
+.banner::after {
+  left: auto;
+  right: -70px;
+  border-left: 20px solid #791;
+  border-right: 30px solid transparent;
+  transform: rotate(5deg);
+}
+
+.red-pulse {
+	box-shadow: 0 0 0 0 rgb(224, 7, 7);
+	transform: scale(1);
+	animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgb(255, 0, 0);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 0, 0, 0.958);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 9, 9, 0.98);
+	}
+}
+
+.amber-pulse {
+	box-shadow: 0 0 0 0 rgb(224, 206, 7);
+	transform: scale(1);
+	animation: amber-pulse 2s infinite;
+}
+
+@keyframes amber-pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgb(255, 238, 0);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px rgba(255, 247, 0, 0.958);
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 rgba(255, 206, 9, 0.98);
+	}
 }
