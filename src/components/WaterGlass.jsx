@@ -46,13 +46,13 @@ const WaterGlass = ({ glasses, setGlasses }) => {
     };
   }, [now]);
 
-  const colour = glasses <= 5 ? 'red' : glasses > 5 ? '#FFBF00' : 'green';
+  const colour = glasses <= 5 ? 'red' : '#FFBF00';
 
   const glass =
     glasses === 8 ? (
       <div className="shape">
         <div className="wave"></div>
-        <span style={{ fontSize: '50px', color: 'red', position: 'relative' }}>
+        <span style={{ fontSize: '50px', color: 'darkgreen', position: 'relative', border: `solid 4px darkgreen`, }}>
           {glasses}
         </span>
       </div>
