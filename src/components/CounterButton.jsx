@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { supabase } from '../SupabaseClient';
-import WaterGlass from './WaterGlass';
 
 const CounterButton = ({
   cuddles,
@@ -9,7 +8,6 @@ const CounterButton = ({
   setTotalCuddles,
   kisses,
   setBigKiss,
-  glasses,
   setGlasses,
   buttonLabel,
   setButtonLabel,
@@ -27,6 +25,30 @@ const CounterButton = ({
       setCuddles(0);
       setBigKiss(kisses + 1);
       setButtonLabel('Add Cuddles');
+    }
+  };
+
+  const getData = async () => {
+    try {
+      let { data, error, status } = await supabase
+        .from('cuddlecounter')
+        .select(`cuddles, kisses, totalcuddles, glasses`)
+        .eq('id', 1)
+        .single();
+
+      if (error && status !== 406) {
+        throw error;
+      }
+
+      if (data) {
+        console.log(data);
+        setCuddles(data.cuddles);
+        setBigKiss(data.kisses);
+        setTotalCuddles(data.totalcuddles);
+        setGlasses(data.glasses);
+      }
+    } catch (error) {
+      alert(error.message);
     }
   };
 
@@ -57,31 +79,7 @@ const CounterButton = ({
 
   useEffect(() => {
     getData();
-  }, []);
-
-  const getData = async () => {
-    try {
-      let { data, error, status } = await supabase
-        .from('cuddlecounter')
-        .select(`cuddles, kisses, totalcuddles, glasses`)
-        .eq('id', 1)
-        .single();
-
-      if (error && status !== 406) {
-        throw error;
-      }
-
-      if (data) {
-        console.log(data);
-        setCuddles(data.cuddles);
-        setBigKiss(data.kisses);
-        setTotalCuddles(data.totalcuddles);
-        setGlasses(data.glasses);
-      }
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  });
 
   html.push(<p className="sub-headings">❤️ Number of Big Kisses: {kisses}</p>);
 
@@ -107,8 +105,7 @@ const CounterButton = ({
           position: 'absolute',
           alignContent: 'center',
         }}
-      >
-      </span>
+      ></span>
     </div>
   );
 };
