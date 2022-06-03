@@ -36,7 +36,7 @@ const WaterGlass = ({ glasses, setGlasses }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setNow(moment(new Date()).format('HH:mm:ss'));
-      if (now === '00:00:00') {
+      if (now === '23:59:00') {
         setGlasses(0);
       }
     }, 1000);
@@ -44,7 +44,7 @@ const WaterGlass = ({ glasses, setGlasses }) => {
     return () => {
       clearInterval(interval);
     };
-  }, [now]);
+  }, [now, setGlasses]);
 
   const colour = glasses <= 5 ? 'red' : '#FFBF00';
 
