@@ -4,8 +4,7 @@ import moment from 'moment';
 import './../App.css';
 
 const WaterGlass = ({ glasses, setGlasses }) => {
-  const [now, setNow] = useState(moment(new Date()).format('HH:mm:ss'));
-
+  
   const handleOnClick = () => {
     setGlasses(glasses + 1);
   };
@@ -33,18 +32,9 @@ const WaterGlass = ({ glasses, setGlasses }) => {
     updateData();
   }, [glasses]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNow(moment(new Date()).format('HH:mm:ss'));
-      if (now === '23:59:00') {
-        setGlasses(0);
-      }
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [now, setGlasses]);
+  if (moment(new Date()).format('HH:mm:ss') === '23:59:00') {
+    setGlasses(0);
+  }
 
   const colour = glasses <= 5 ? 'red' : '#FFBF00';
 
